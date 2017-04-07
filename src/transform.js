@@ -4,10 +4,6 @@ export default function (asstes = {}) {
   const asstesKeys = Object.keys(asstes);
   const asstesValues = Object.values(asstes);
 
-  // console.log(asstesKeys);
-  // console.log(asstesValues);
-  // console.log('|----------------------|\n');
-
   const manifest = asstesKeys.reduce((manifest, name, index) => {
 
     let files = asstesValues[index];
