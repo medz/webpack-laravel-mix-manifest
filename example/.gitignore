@@ -1,0 +1,4 @@
+*
+!.gitignore
+!/main.js
+!/webpack.config.js
