@@ -1,6 +1,6 @@
 import TransformFunction from './transform';
 
-/*export */class WebpackLaravelMixManifest {
+class WebpackLaravelMixManifest {
 
   /**
    * 插件构造函数入口.
