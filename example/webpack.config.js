@@ -16,8 +16,16 @@ var WebpackLaravelMixManifestObject = require('../dist/main.js');
 var transform = WebpackLaravelMixManifestObject.transform;
 var WebpackLaravelMixManifest = WebpackLaravelMixManifestObject.default;
 
+// Transform is optional.
+// 
 // ES6 code:
 // import WebpackLaravelMixManifest, { transform } from '../dist/main.js';
+// 
+// package use:
+// import WebpackLaravelMixManifest, { transform } from 'webpack-laravel-mix-manifest';
+// 
+// If you want to use es5's original code to produce the laravel-mix function compatible plugin:
+// import WebpackLaravelMixManifest, { transform } from 'webpack-laravel-mix-manifest/src/main.js'; 
 
 module.exports = {
   cache: true,
