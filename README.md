@@ -129,11 +129,14 @@ new WebpackLaravelMixManifest({
 ## Contributions
 
 Contributions welcome! Make sure to pass:
+
 ```shell
 yarn example:build
+```
 
-// Or
+Or:
 
+```shell
 npm run example:build
 ```
 
