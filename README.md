@@ -124,6 +124,7 @@ new WebpackLaravelMixManifest({
 ```
 
 > `asstes` is the resource for` webpack` 's packaging.
+>
 > Warning: The output of transform should be a String, not an object. On Node v4.x if you return a real object in transform, then webpack will break with a TypeError. Just adding a simple JSON.stringify() around your object is usually what you need to solve any problems.
 
 ## Contributions
