@@ -23,5 +23,4 @@ test_script:
   - npm test -- --coverage
 
 cache:
-  - .git
   - node_modules
