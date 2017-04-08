@@ -11,4 +11,4 @@ branches:
         - master
 script:
     - yarn example:build
-    - yarn test -- ----coverage
+    - yarn test -- --coverage
