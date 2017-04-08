@@ -43,6 +43,27 @@ export default {
 
 ```
 
+### Laravel template
+
+Assume that the generated mix-manifest.json content is:
+```json
+{
+  "/app.js": "/ashdgahdhasd6as7dasdh.js"
+}
+```
+
+Use:
+
+```html
+<script src="{{ mix('app.js') }}"></script>
+```
+
+Output:
+
+```html
+<script src="/ashdgahdhasd6as7dasdh.js"></script>
+```
+
 ### Basic
 
 ```js
