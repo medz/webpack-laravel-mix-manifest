@@ -1,19 +1,16 @@
 import path from 'path';
 
-export default function (asstes = {}) {
-  const asstesKeys = Object.keys(asstes);
-  const asstesValues = Object.values(asstes);
+const transform = (asstes = {}) => {
+  let manifest = {};
 
-  const manifest = asstesKeys.reduce((manifest, name, index) => {
-
-    let files = asstesValues[index];
-    if (typeof asstesValues[index] === 'string') {
+  for (let name in asstes) {
+    let files = asstes[name];
+    if (typeof files === 'string') {
       files = [files];
     }
 
-    files = [...files];
-
-    return files.reduce((manifest, filename) => {
+    for (let index in files) {
+      const filename = files[index];
       const dirname = path.dirname(filename);
       const extname = path.extname(filename);
 
@@ -23,10 +20,10 @@ export default function (asstes = {}) {
       }
 
       manifest[key] = `/${filename}`;
-
-      return manifest;
-    }, manifest);
-  }, {});
+    }
+  }
 
   return JSON.stringify(manifest, null, 2);
 };
+
+export default transform;

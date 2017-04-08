@@ -87,26 +87,25 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-exports.default = function () {
+var _path = __webpack_require__(2);
+
+var _path2 = _interopRequireDefault(_path);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var transform = function transform() {
   var asstes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-  var asstesKeys = Object.keys(asstes);
-  var asstesValues = Object.values(asstes);
+  var manifest = {};
 
-  // console.log(asstesKeys);
-  // console.log(asstesValues);
-  // console.log('|----------------------|\n');
-
-  var manifest = asstesKeys.reduce(function (manifest, name, index) {
-
-    var files = asstesValues[index];
-    if (typeof asstesValues[index] === 'string') {
+  for (var name in asstes) {
+    var files = asstes[name];
+    if (typeof files === 'string') {
       files = [files];
     }
 
-    files = [].concat(_toConsumableArray(files));
-
-    return files.reduce(function (manifest, filename) {
+    for (var index in files) {
+      var filename = files[index];
       var dirname = _path2.default.dirname(filename);
       var extname = _path2.default.extname(filename);
 
@@ -116,23 +115,13 @@ exports.default = function () {
       }
 
       manifest[key] = '/' + filename;
-
-      return manifest;
-    }, manifest);
-  }, {});
+    }
+  }
 
   return JSON.stringify(manifest, null, 2);
 };
 
-var _path = __webpack_require__(2);
-
-var _path2 = _interopRequireDefault(_path);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-;
+exports.default = transform;
 
 /***/ }),
 /* 1 */
@@ -156,7 +145,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/*export */var WebpackLaravelMixManifest = function () {
+var WebpackLaravelMixManifest = function () {
 
   /**
    * 插件构造函数入口.
