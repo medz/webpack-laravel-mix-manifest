@@ -1,0 +1,32 @@
+environment:
+  matrix:
+    - node_version: "7"
+    - node_version: "6"
+    - node_version: "5"
+    - node_version: "4"
+
+platform:
+  - x86
+  - x64
+
+branches:
+  only:
+    - master
+
+install:
+  - ps: Install-Product node $env:node_version
+  - npm install
+
+build_script:
+  - npm run build
+  - npm run example:build
+
+test_script:
+  - node --version
+  - npm --version
+  - npm run example:build
+  - npm test -- --coverage
+
+cache:
+  - node_modules
+  - "%LOCALAPPDATA%/Yarn"
