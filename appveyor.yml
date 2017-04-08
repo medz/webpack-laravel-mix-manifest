@@ -24,9 +24,8 @@ build_script:
 test_script:
   - node --version
   - npm --version
-  - npm run example:build
   - npm test -- --coverage
 
 cache:
+  - .git
   - node_modules
-  - "%LOCALAPPDATA%/Yarn"
