@@ -1,6 +1,6 @@
 {
   "name": "webpack-laravel-mix-manifest",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "🐶Use the webpack build information to generate the laravel-mix function compatibility information file.",
   "main": "dist/main.js",
   "repository": {
