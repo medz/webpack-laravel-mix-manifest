@@ -18,7 +18,7 @@ const webpackConfig = {
     path: path.join(__dirname, 'dist'),
     filename: 'main.js',
     library: 'WebpackLaravelMixManifest',
-    libraryTarget: 'umd2',
+    libraryTarget: 'umd',
     umdNamedDefine: true
   },
   module: {
