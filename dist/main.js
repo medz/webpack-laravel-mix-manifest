@@ -16,9 +16,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -42,9 +42,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
 /******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
@@ -73,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -86,58 +83,11 @@ return /******/ (function(modules) { // webpackBootstrap
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _path = __webpack_require__(2);
-
-var _path2 = _interopRequireDefault(_path);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var transform = function transform() {
-  var asstes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-  var manifest = {};
-
-  for (var name in asstes) {
-    var files = asstes[name];
-    if (typeof files === 'string') {
-      files = [files];
-    }
-
-    for (var index in files) {
-      var filename = files[index];
-      var dirname = _path2.default.dirname(filename);
-      var extname = _path2.default.extname(filename);
-
-      var key = '/' + dirname + '/' + name + extname;
-      if (dirname === '.') {
-        key = '/' + name + extname;
-      }
-
-      manifest[key] = '/' + filename;
-    }
-  }
-
-  return JSON.stringify(manifest, null, 2);
-};
-
-exports.default = transform;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 exports.transform = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _transform = __webpack_require__(0);
+var _transform = __webpack_require__(1);
 
 var _transform2 = _interopRequireDefault(_transform);
 
@@ -203,6 +153,53 @@ var WebpackLaravelMixManifest = function () {
 var transform = exports.transform = _transform2.default;
 
 exports.default = WebpackLaravelMixManifest;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _path = __webpack_require__(2);
+
+var _path2 = _interopRequireDefault(_path);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var transform = function transform() {
+  var asstes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  var manifest = {};
+
+  for (var name in asstes) {
+    var files = asstes[name];
+    if (typeof files === 'string') {
+      files = [files];
+    }
+
+    for (var index in files) {
+      var filename = files[index];
+      var dirname = _path2.default.dirname(filename);
+      var extname = _path2.default.extname(filename);
+
+      var key = '/' + dirname + '/' + name + extname;
+      if (dirname === '.') {
+        key = '/' + name + extname;
+      }
+
+      manifest[key] = '/' + filename;
+    }
+  }
+
+  return JSON.stringify(manifest, null, 2);
+};
+
+exports.default = transform;
 
 /***/ }),
 /* 2 */
