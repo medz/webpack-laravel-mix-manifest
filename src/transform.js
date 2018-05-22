@@ -1,10 +1,10 @@
 import path from 'path';
 
-const transform = (asstes = {}) => {
+const transform = (assets = {}) => {
   let manifest = {};
 
-  for (let name in asstes) {
-    let files = asstes[name];
+  for (let name in assets) {
+    let files = assets[name];
     if (typeof files === 'string') {
       files = [files];
     }
@@ -12,7 +12,20 @@ const transform = (asstes = {}) => {
     for (let index in files) {
       const filename = files[index];
       const dirname = path.dirname(filename);
-      const extname = path.extname(filename);
+      let extname = path.extname(filename);
+
+      // Determine if the name already contains a file extension.
+      const matchResults = new RegExp(extname.replace(".", "\\.") + "$").exec(name);
+
+      // If that file extension found within the name matches the target output
+      // file name, then we can skip setting the ext name. 
+      if(matchResults && matchResults.length > 0) {
+        const foundExt = matchResults[0];
+
+        if(foundExt === extname) {
+            extname = "";
+        }
+      }
 
       let key = `/${dirname}/${name}${extname}`;
       if (dirname === '.') {
