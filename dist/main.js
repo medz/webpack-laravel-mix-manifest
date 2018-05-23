@@ -172,12 +172,12 @@ var _path2 = _interopRequireDefault(_path);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var transform = function transform() {
-  var asstes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var assets = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
   var manifest = {};
 
-  for (var name in asstes) {
-    var files = asstes[name];
+  for (var name in assets) {
+    var files = assets[name];
     if (typeof files === 'string') {
       files = [files];
     }
@@ -186,6 +186,19 @@ var transform = function transform() {
       var filename = files[index];
       var dirname = _path2.default.dirname(filename);
       var extname = _path2.default.extname(filename);
+
+      // Determine if the name already contains a file extension.
+      var matchResults = new RegExp(extname.replace(".", "\\.") + "$").exec(name);
+
+      // If that file extension found within the name matches the target output
+      // file name, then we can skip setting the ext name. 
+      if (matchResults && matchResults.length > 0) {
+        var foundExt = matchResults[0];
+
+        if (foundExt === extname) {
+          extname = "";
+        }
+      }
 
       var key = '/' + dirname + '/' + name + extname;
       if (dirname === '.') {
