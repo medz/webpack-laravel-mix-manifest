@@ -1,39 +1,27 @@
-import TransformFunction from './transform';
-
-class WebpackLaravelMixManifest {
-
-  /**
-   * 插件构造函数入口.
-   *
-   * @param {String} options.filename 文件名称
-   * @param {Function} options.transform 转换处理方法
-   *
-   * @author Seven Du <shiweidu@outlook.com>
-   */
-  constructor({ filename = 'mix-manifest.json', transform = TransformFunction } = {}) {
-    this.filename = filename;
-    this.transform = transform;
-  }
-
-  apply(compiler) {
-    compiler.plugin('emit', (curCompiler, next) => {
-
-      // Get stats.assetsByChunkName
-      // **Note**: In future, could pass something like `{ showAssets: true }`
-      // to the `getStats()` function for more limited object returned.
-      const { assetsByChunkName } = curCompiler.getStats().toJson();
-      const mixManifestString = this.transform(assetsByChunkName);
-
-      curCompiler.assets[this.filename] = {
-        source: () => mixManifestString,
-        size: () => mixManifestString.length
-      };
-
-      next();
-    });
-  }
+/**
+ * Create the plugin class.
+ * @param { filename: string|null, transform: Function|null } options
+ */
+function WebpackLaravelMixManifest({ filename = null, transform = null } = {}) {
+  this.filename = filename ? filename : 'mix-manifest.json';
+  this.transform = transform instanceof Function ? transform : require('./transform');
 }
 
-export const transform = TransformFunction;
+/**
+ * The plugin apply.
+ * @param {Object} compiler
+ */
+WebpackLaravelMixManifest.prototype.apply = function(compiler) {
+  compiler.hooks.emit.tap('WebpackLaravelMixManifest', (compilation) => {
 
-export default WebpackLaravelMixManifest;
+    let stats = compilation.getStats().toJson();
+    let manifest = this.transform(Object.assign({}, stats.assetsByChunkName));
+
+    compilation.assets[this.filename] = {
+      source: () => manifest,
+      size: () => manifest.length,
+    };
+  });
+};
+
+module.exports = WebpackLaravelMixManifest;

@@ -1,6 +1,6 @@
-import path from 'path';
+const path = require('path');
 
-const transform = (assets = {}) => {
+module.exports = function (assets = {}) {
   let manifest = {};
 
   for (let name in assets) {
@@ -15,7 +15,7 @@ const transform = (assets = {}) => {
       let extname = path.extname(filename);
 
       // Determine if the name already contains a file extension.
-      const matchResults = new RegExp(extname.replace(".", "\\.") + "$").exec(name);
+      const matchResults = new RegExp(extname.replace('.', '\\.') + '$').exec(name);
 
       // If that file extension found within the name matches the target output
       // file name, then we can skip setting the ext name. 
@@ -23,7 +23,7 @@ const transform = (assets = {}) => {
         const foundExt = matchResults[0];
 
         if(foundExt === extname) {
-            extname = "";
+          extname = '';
         }
       }
 
@@ -38,5 +38,3 @@ const transform = (assets = {}) => {
 
   return JSON.stringify(manifest, null, 2);
 };
-
-export default transform;
