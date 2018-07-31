@@ -8,6 +8,8 @@
 
 Use the webpack build information to generate the laravel-mix function compatibility information file.
 
+> The `2.0` version **Only Support** `webpack` 4, If you using `webpack` 2 or 3 version `1.0`.
+
 ## Scenes to be used
 
 Do not use *laravel* default front-end tool to use **wenpack** built in the case, would like to be compatible with laravel auxiliary `mix` function to do the alias quotation of static packaging resources.
@@ -28,8 +30,6 @@ yarn add webpack-laravel-mix-manifest --dev
 ```
 
 ## Examples
-
-You can see lots of examples at [example/webpack.config.js](example/webpack.config.js).
 
 ### Using the ES6 (babel) webpack configuration usage:
 
