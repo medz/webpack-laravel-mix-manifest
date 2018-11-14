@@ -3,10 +3,6 @@ language: node_js
 node_js:
     - 10
     - 8
-    - 7
-    - 6
-    - 5
-    - 4
 
 cache:
     yarn: true
@@ -16,12 +12,11 @@ branches:
         - master
 
 before_install:
-    - node --version
-    - npm --version
+    - npm i -g yarn
 
 install:
     - yarn install
 
 script:
-    - yarn example:build
-    - yarn test -- --coverage
+    - node ./test.js
+    - yarn lint

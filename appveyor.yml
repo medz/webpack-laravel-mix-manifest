@@ -2,10 +2,6 @@ environment:
   matrix:
     - node_version: "10"
     - node_version: "8"
-    - node_version: "7"
-    - node_version: "6"
-    - node_version: "5"
-    - node_version: "4"
 
 branches:
   only:
@@ -20,9 +16,8 @@ build_script:
   - npm run example:build
 
 test_script:
-  - node --version
-  - npm --version
-  - npm test -- --coverage
+  - node ./test.js
+  - yarn lint
 
 cache:
   - node_modules
