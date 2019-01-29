@@ -1,19 +1,19 @@
 environment:
   matrix:
-    - node_version: "10"
-    - node_version: "8"
+    - nodejs_version: "10"
+    - nodejs_version: "8"
 
 branches:
   only:
     - master
 
 install:
-  - ps: Install-Product node $env:node_version
+  - ps: Install-Product node $env:nodejs_version
   - npm install
 
 test_script:
   - node ./test.js
-  - yarn lint
+  - npm run lint
 
 cache:
   - node_modules
