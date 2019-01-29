@@ -12,8 +12,11 @@ install:
   - npm install
 
 test_script:
-  - node ./test.js
+  - npm test
   - npm run lint
 
 cache:
   - node_modules
+
+# Don't actually build.
+build: off
