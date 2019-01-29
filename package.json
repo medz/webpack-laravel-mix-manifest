@@ -23,6 +23,7 @@
     "node": ">=8"
   },
   "scripts": {
-    "lint": "eslint --fix --ext .js src"
+    "lint": "eslint --fix --ext .js src",
+    "test": "node ./test.js"
   }
 }
