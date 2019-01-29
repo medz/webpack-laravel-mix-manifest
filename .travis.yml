@@ -18,5 +18,5 @@ install:
     - yarn install
 
 script:
-    - node ./test.js
+    - yarn test
     - yarn lint
