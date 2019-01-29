@@ -11,10 +11,6 @@ install:
   - ps: Install-Product node $env:node_version
   - npm install
 
-build_script:
-  - npm run build
-  - npm run example:build
-
 test_script:
   - node ./test.js
   - yarn lint
