@@ -27,6 +27,7 @@ module.exports = function (assets = {}) {
         }
       }
 
+      name = new URL(name, 'file:').pathname.replace(/^\/(.*)/, '$1');
       let key = `/${dirname}/${name}${extname}`;
       if (dirname === '.') {
         key = `/${name}${extname}`;

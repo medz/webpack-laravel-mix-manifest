@@ -3,9 +3,9 @@ const WebpackLaravelMixManifest = require("./src/main");
 
 const compiler = webpack({
   mode: "development",
-  context: __dirname+'/example',
+  context: __dirname+'/src',
   entry: {
-    main: './main.js'
+    'main?a': './main.js',
   },
   output: {
     path: __dirname+'/demo',
@@ -17,7 +17,7 @@ const compiler = webpack({
 });
 
 compiler.run(function (error, state) {
-  console.log(error);
+  // console.log(error);
   console.log();
-  console.log(state);
+  // console.log(state);
 });
