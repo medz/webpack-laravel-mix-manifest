@@ -16,6 +16,7 @@
     "webpack": ">=4.0.0"
   },
   "devDependencies": {
+    "eslint": "^6.2.2",
     "webpack": "^4.39.3"
   },
   "engines": {
