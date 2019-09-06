@@ -1,4 +1,5 @@
 const path = require('path');
+const URL = require('url');
 
 module.exports = function (assets = {}) {
   let manifest = {};
