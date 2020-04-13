@@ -1,5 +1,6 @@
 # webpack-laravel-mix-manifest
 
+![Node.js Package](https://github.com/medz/webpack-laravel-mix-manifest/workflows/Node.js%20Package/badge.svg)
 ![Node.js CI](https://github.com/medz/webpack-laravel-mix-manifest/workflows/Node.js%20CI/badge.svg)
 [![Build status](https://ci.appveyor.com/api/projects/status/03vskuss6wny910u?svg=true)](https://ci.appveyor.com/project/medz/webpack-laravel-mix-manifest)
 [![version](https://img.shields.io/npm/v/webpack-laravel-mix-manifest.svg)](https://www.npmjs.com/package/webpack-laravel-mix-manifest)
