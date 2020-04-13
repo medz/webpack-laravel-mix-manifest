@@ -5,19 +5,15 @@ const compiler = webpack({
   mode: "development",
   context: __dirname+'/src',
   entry: {
-    'main?a': './main.js',
+    'main': './main.js',
   },
   output: {
     path: __dirname+'/demo',
-    filename: 'js/[name].[hash].js'
+    filename: 'js/[name].[hash].js?id=[hash]'
   },
   plugins: [
     new WebpackLaravelMixManifest(),
   ]
 });
 
-compiler.run(function (error, state) {
-  // console.log(error);
-  console.log();
-  // console.log(state);
-});
+compiler.run();

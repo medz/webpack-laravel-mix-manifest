@@ -16,8 +16,7 @@
     "webpack": ">=4.0.0"
   },
   "devDependencies": {
-    "eslint": "^6.2.2",
-    "webpack": "^4.39.3"
+    "webpack": "^4.42.1"
   },
   "engines": {
     "node": ">=8"
@@ -26,5 +25,7 @@
     "lint": "eslint --fix --ext .js src",
     "test": "node ./test.js"
   },
-  "dependencies": {}
+  "dependencies": {
+    "collect.js": "^4.20.3"
+  }
 }

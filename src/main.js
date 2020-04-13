@@ -1,27 +1,25 @@
-/**
- * Create the plugin class.
- * @param { filename: string|null, transform: Function|null } options
- */
-function WebpackLaravelMixManifest({ filename = null, transform = null } = {}) {
-  this.filename = filename ? filename : 'mix-manifest.json';
-  this.transform = transform instanceof Function ? transform : require('./transform');
+const Manifest = require('./manifest');
+
+class WebpackLaravelMixManifest {
+  constructor(name = 'mix-manifest.json') {
+    this.name = name;
+  }
+
+  /**
+   * Apply the plugin.
+   *
+   * @param {Object} compiler
+   */
+  apply(compiler) {
+    compiler.hooks.emit.tap('WebpackLaravelMixManifest', (compilation) => {
+      let stats = compilation.getStats().toJson();
+      let manifestContents = (new Manifest(this.name)).transform(stats).rebuild();
+      compilation.assets[this.name] = {
+        source: () => manifestContents,
+        size: () => manifestContents.length,
+      };
+    });
+  }
 }
-
-/**
- * The plugin apply.
- * @param {Object} compiler
- */
-WebpackLaravelMixManifest.prototype.apply = function(compiler) {
-  compiler.hooks.emit.tap('WebpackLaravelMixManifest', (compilation) => {
-
-    let stats = compilation.getStats().toJson();
-    let manifest = this.transform(Object.assign({}, stats.assetsByChunkName));
-
-    compilation.assets[this.filename] = {
-      source: () => manifest,
-      size: () => manifest.length,
-    };
-  });
-};
 
 module.exports = WebpackLaravelMixManifest;
