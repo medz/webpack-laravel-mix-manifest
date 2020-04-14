@@ -21,13 +21,20 @@ class Manifest {
      *
      * @param {string} filePath
      */
-    add(filePath, entryName) {
-        filePath = this.normalizePath(filePath);
+    add(filePaths, entryName) {
+        if (typeof filePaths === 'string') {
+            filePaths = [filePaths];
+        }
 
-        let original = filePath.replace(/\?.*/, '');
-        original = original.replace(path.basename(original), entryName + path.extname(original));
+        for (let index in filePaths) {
+            let filePath = filePaths[index];
+            filePath = this.normalizePath(filePath);
 
-        this.manifest[original] = filePath;
+            let original = filePath.replace(/\?.*/, '');
+            original = original.replace(path.basename(original), entryName + path.extname(original));
+
+            this.manifest[original] = filePath;
+        }
 
         return this;
     }
