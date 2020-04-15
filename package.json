@@ -12,6 +12,9 @@
   "files": [
     "src/*.js"
   ],
+  "dependencies": {
+    "collect.js": "^4.20.3"
+  },
   "peerDependencies": {
     "webpack": ">=4.0.0"
   },
@@ -19,13 +22,9 @@
     "webpack": "^4.42.1"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "scripts": {
-    "lint": "eslint --fix --ext .js src",
     "test": "node ./test.js"
-  },
-  "dependencies": {
-    "collect.js": "^4.20.3"
   }
 }

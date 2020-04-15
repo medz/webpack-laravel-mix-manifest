@@ -46,27 +46,6 @@ export default {
 
 ```
 
-### Laravel template
-
-Assume that the generated mix-manifest.json content is:
-```json
-{
-  "/app.js": "/ashdgahdhasd6as7dasdh.js"
-}
-```
-
-Use:
-
-```html
-<script src="{{ mix('app.js') }}"></script>
-```
-
-Output:
-
-```html
-<script src="/ashdgahdhasd6as7dasdh.js"></script>
-```
-
 ### Basic
 
 ```js
@@ -81,6 +60,28 @@ module.exports = {
 };
 
 ```
+
+### Laravel template
+
+Assume that the generated mix-manifest.json content is:
+```json
+{
+  "/app.js": "/ashdgahdhasd6as7dasdh.js"
+}
+```
+
+Use:
+
+```html
+<script src="{{ mix('js/main.js') }}"></script>
+```
+
+Output:
+
+```html
+<script src="/js/main.27f5a7281aa5f541082e.js"></script>
+```
+
 
 ### More
 
@@ -99,16 +100,13 @@ export default {
 
 > It should be noted that the plug-in source code using ES6 syntax development, so you want to ensure that your webpack configuration file is also used ES6 (babel) configuration.
 
-## API
+## Options
 
-The plugin provides a custom state file name configuration and a custom conversion method. The two APIs allow the user to customize the configuration to generate the configuration after writing the file and the converted state method.
+If you are not used to build front-end resources for the Laravel framework, you can customize the name of the generated JSON filename.
 
 ```js
 const options = {
-    filename: 'mix-manifest.json',
-    transform: function (assets) {
-        // todo.
-    }
+    filename: 'mix-manifest.json'
 };
 new WebpackLaravelMixManifest(options);
 ```
@@ -124,32 +122,6 @@ new WebpackLaravelMixManifest({
     filename: 'custom.json'
 });
 ```
-
-### transform
-
-Customize the conversion from the webpack assets.
-
-The default conversion method is [src/transform.js](src/transform.js).
-
-The default conversion method is also exposed to the outside and is convenient to call it in its own logic.
-
-```js
-import { transform } from 'webpack-laravel-mix-manifest';
-```
-
-When you call the webpack-laravel-mix-manifest plugin, the custom conversion interface is as follows:
-
-```js
-new WebpackLaravelMixManifest({
-    transform: function (asstes) {
-        // todo.
-    }
-});
-```
-
-> `asstes` is the resource for` webpack` 's packaging.
->
-> Warning: The output of transform should be a String, not an object. On Node v4.x if you return a real object in transform, then webpack will break with a TypeError. Just adding a simple JSON.stringify() around your object is usually what you need to solve any problems.
 
 ## LICENSE
 
