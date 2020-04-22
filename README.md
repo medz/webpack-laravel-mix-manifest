@@ -1,30 +1,28 @@
-# webpack-laravel-mix-manifest
+# Webpack Laravel Mix Manifest
 
 ![Node.js Package](https://github.com/medz/webpack-laravel-mix-manifest/workflows/Node.js%20Package/badge.svg)
 ![Node.js CI](https://github.com/medz/webpack-laravel-mix-manifest/workflows/Node.js%20CI/badge.svg)
 [![Build status](https://ci.appveyor.com/api/projects/status/03vskuss6wny910u?svg=true)](https://ci.appveyor.com/project/medz/webpack-laravel-mix-manifest)
-[![version](https://img.shields.io/npm/v/webpack-laravel-mix-manifest.svg)](https://www.npmjs.com/package/webpack-laravel-mix-manifest)
-[![license](https://img.shields.io/npm/l/webpack-laravel-mix-manifest.svg)](https://github.com/medz/webpack-laravel-mix-manifest)
-[![downloads](https://img.shields.io/npm/dt/webpack-laravel-mix-manifest.svg)](https://www.npmjs.com/package/webpack-laravel-mix-manifest)
+[![version](https://badgen.net/npm/v/webpack-laravel-mix-manifest)](https://www.npmjs.com/package/webpack-laravel-mix-manifest)
+[![license](https://badgen.net/github/license/medz/webpack-laravel-mix-manifest)](https://github.com/medz/webpack-laravel-mix-manifest)
+[![downloads](https://badgen.net/npm/dt/webpack-laravel-mix-manifest)](https://www.npmjs.com/package/webpack-laravel-mix-manifest)
 
-Use the webpack build information to generate the laravel-mix function compatibility information file.
+A webpack plugin that generates Laravel framework compatible `mix-manifest.josn` file.
 
-> The `2.x` version **Only Support** `webpack` 4, If you using `webpack` 2 or 3 version `1.0`.
+> If you are using `webpack` 2 or 3 then install version `1.x` instead.
 
-## Scenes to be used
-
-Do not use *laravel* default front-end tool to use **wenpack** built in the case, would like to be compatible with laravel auxiliary `mix` function to do the alias quotation of static packaging resources.
-
-Laravel's way is to need a **mix-manifest.json** file to do the alias configuration, this plugin just solves this problem.
+## Use case
+If you are not using [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) to bundle your assets in Laravel php framework, 
+and you still want to utilize `mix()` helper method, this plugin can help you in generating `mix-manifest.json`
 
 ## Installation
 
 The plugin is available via npm:
 
 ```shell
-npm i webpack-laravel-mix-manifest --save-dev
+npm install webpack-laravel-mix-manifest --save-dev
 ```
-You can also use yarn:
+If you are using yarn:
 
 ```shell
 yarn add webpack-laravel-mix-manifest --dev
@@ -39,90 +37,47 @@ import WebpackLaravelMixManifest from 'webpack-laravel-mix-manifest';
 
 export default {
     plugins: [
-        // Write out 「mix-manifest.json」 to build directory.
+        // Write out mix-manifest.json to build directory.
         new WebpackLaravelMixManifest()
     ]
 };
-
 ```
 
 ### Basic
-
 ```js
-
 let WebpackLaravelMixManifest = require('webpack-laravel-mix-manifest');
 
 module.exports = {
     plugins: [
-        // Write out 「mix-manifest.json」 to build directory.
+        // Write out mix-manifest.json to build directory.
         new WebpackLaravelMixManifest()
     ]
 };
-
 ```
 
-### Laravel template
-
-Assume that the generated mix-manifest.json content is:
+### Laravel usage
+Assume that the generated `public/mix-manifest.json` content is:
 ```json
 {
-  "/app.js": "/ashdgahdhasd6as7dasdh.js"
+  "/js/main.js": "/js/main-be4b86e10e835384d714.js"
 }
 ```
 
-Use:
-
-```html
+Blade usage:
+```blade
 <script src="{{ mix('js/main.js') }}"></script>
 ```
 
-Output:
-
+Browser output:
 ```html
-<script src="/js/main.27f5a7281aa5f541082e.js"></script>
+<script src="/js/main-ashdgahdhasd6as7dasdh.js"></script>
 ```
 
-
-### More
-
-If you do not want to use a compiled plugin, you can use the original plugin code:
-
+## Configuration options
+You can customize the name of the generated JSON file name.
 ```js
-import WebpackLaravelMixManifest from 'webpack-laravel-mix-manifest/src/main.js';
-
-export default {
-    plugins: [
-        // Write out 「mix-manifest.json」 to build directory.
-        new WebpackLaravelMixManifest()
-    ]
-};
+new WebpackLaravelMixManifest('mix-manifest.json');
 ```
 
-> It should be noted that the plug-in source code using ES6 syntax development, so you want to ensure that your webpack configuration file is also used ES6 (babel) configuration.
-
-## Options
-
-If you are not used to build front-end resources for the Laravel framework, you can customize the name of the generated JSON filename.
-
-```js
-const options = {
-    filename: 'mix-manifest.json'
-};
-new WebpackLaravelMixManifest(options);
-```
-
-### filename
-
-The name of the file used for custom writing.
-
-The default write name is `mix-manifest.json`.
-
-```
-new WebpackLaravelMixManifest({
-    filename: 'custom.json'
-});
-```
-
-## LICENSE
-
+## License
 This package follows the MIT open source agreement.

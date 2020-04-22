@@ -19,7 +19,8 @@ class Manifest {
     /**
      * Add the given path to the manifest file.
      *
-     * @param {string} filePath
+     * @param {string} filePaths
+     * @param {string} entryName
      */
     add(filePaths, entryName) {
         if (typeof filePaths === 'string') {
