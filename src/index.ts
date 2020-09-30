@@ -1,7 +1,8 @@
 import webpack from 'webpack';
 import { Manifest } from './manifest';
 
-class LaravelMixManifestPlugin extends webpack.Plugin {
+export { Manifest }
+export class WebpackLaravelMixManifest extends webpack.Plugin {
     /**
      * Create the webpack plugin.
      * @param endpoint Laravel `mix` helper used filename.
@@ -25,7 +26,7 @@ class LaravelMixManifestPlugin extends webpack.Plugin {
             .hooks
             .emit
             .tap(
-                LaravelMixManifestPlugin.name,
+                WebpackLaravelMixManifest.name,
                 this.hookTapCompilationHandler.bind(this),
             );
     }
@@ -54,8 +55,3 @@ class LaravelMixManifestPlugin extends webpack.Plugin {
         }
     }
 }
-
-exports = LaravelMixManifestPlugin;
-
-export { Manifest, LaravelMixManifestPlugin };
-export default LaravelMixManifestPlugin;

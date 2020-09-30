@@ -15,6 +15,13 @@
   },
   "author": "Seven Du <shiweidu@outlook.com>",
   "license": "MIT",
+  "index": "dist/cjs/index.js",
+  "main": "dist/mjs/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
   "dependencies": {
     "collect.js": "^4.28.2"
   },
