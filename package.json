@@ -1,6 +1,6 @@
 {
   "name": "webpack-laravel-mix-manifest",
-  "version": "2.1.5",
+  "version": "2.2.0-dev.0",
   "keywords": [
     "mix-manifest",
     "mix-manifest.json",
@@ -8,7 +8,7 @@
     "laravel",
     "webpack"
   ],
-  "description": "🐶Use the webpack build information to generate the laravel-mix function compatibility information file.",
+  "description": "🐶A webpack plugin that generates Laravel framework compatible mix-manifest.josn file",
   "main": "src/main.js",
   "repository": {
     "url": "https://github.com/medz/webpack-laravel-mix-manifest.git",
@@ -26,12 +26,7 @@
     "webpack": ">=4.0.0"
   },
   "devDependencies": {
-    "webpack": "^4.42.1"
-  },
-  "engines": {
-    "node": ">=10"
-  },
-  "scripts": {
-    "test": "node ./test.js"
+    "typescript": "^4.0.3",
+    "webpack": "^4.44.2"
   }
 }
