@@ -11,15 +11,8 @@ export class Manifest {
 
     /**
      * Create a new manifest.
-     * @param name {string} The manifest filename.
      */
-    constructor(
-        /**
-         * The manifest filename.
-         * @type {string}
-         */
-        protected readonly endpoint: string,
-    ) {
+    constructor() {
         this.manifest = {};
     }
 

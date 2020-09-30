@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import { Manifest } from './manifest';
 
 export { Manifest }
-export class WebpackLaravelMixManifest extends webpack.Plugin {
+export class WebpackLaravelMixManifest implements webpack.Plugin {
     /**
      * Create the webpack plugin.
      * @param endpoint Laravel `mix` helper used filename.
@@ -12,10 +12,8 @@ export class WebpackLaravelMixManifest extends webpack.Plugin {
          * Laravel framework `mix` helper filename,
          * By default `mix-manifest.json`.
          */
-        private readonly endpoint: string = 'mix-manifest.json',
-    ) {
-        super();
-    }
+        public readonly endpoint: string = 'mix-manifest.json',
+    ) {}
 
     /**
      * Webpack plugin entry.
@@ -34,15 +32,15 @@ export class WebpackLaravelMixManifest extends webpack.Plugin {
     /**
      * Create a manifest instance.
      */
-    protected createManifest(): Manifest {
-        return new Manifest(this.endpoint);
+    createManifest(): Manifest {
+        return new Manifest();
     }
 
     /**
      * Webpack plugin hook handler.
      * @param compilation webpack compilation
      */
-    protected hookTapCompilationHandler(
+     hookTapCompilationHandler(
         compilation: webpack.compilation.Compilation,
     ) {
         const stats = compilation.getStats().toJson();
