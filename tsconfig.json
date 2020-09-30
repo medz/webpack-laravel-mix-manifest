@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "outDir": "dist/mjs",
+    "strict": true,
+    "baseUrl": ".",
+    "rootDir": "src",
+    "removeComments": false,
+    "noUnusedLocals": true,
+    "moduleResolution": "Node",
+    "alwaysStrict": true,
+    "allowJs": false,
+    "declaration": true,
+    "declarationMap": false,
+    "declarationDir": "types",
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "tests",
+  ]
+}
