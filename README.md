@@ -33,7 +33,7 @@ yarn add webpack-laravel-mix-manifest --dev
 ### Using the ES6 (babel) webpack configuration usage:
 
 ```js
-import WebpackLaravelMixManifest from 'webpack-laravel-mix-manifest';
+import { WebpackLaravelMixManifest } from 'webpack-laravel-mix-manifest';
 
 export default {
     plugins: [
@@ -43,9 +43,10 @@ export default {
 };
 ```
 
-### Basic
+### Using CommonJS webpack configuration using:
+
 ```js
-let WebpackLaravelMixManifest = require('webpack-laravel-mix-manifest');
+const { WebpackLaravelMixManifest } = require('webpack-laravel-mix-manifest');
 
 module.exports = {
     plugins: [
@@ -56,7 +57,9 @@ module.exports = {
 ```
 
 ### Laravel usage
+
 Assume that the generated `public/mix-manifest.json` content is:
+
 ```json
 {
   "/js/main.js": "/js/main-be4b86e10e835384d714.js"
@@ -64,20 +67,24 @@ Assume that the generated `public/mix-manifest.json` content is:
 ```
 
 Blade usage:
+
 ```blade
 <script src="{{ mix('js/main.js') }}"></script>
 ```
 
 Browser output:
+
 ```html
-<script src="/js/main-ashdgahdhasd6as7dasdh.js"></script>
+<script src="/js/main-be4b86e10e835384d714.js"></script>
 ```
 
 ## Configuration options
+
 You can customize the name of the generated JSON file name.
 ```js
 new WebpackLaravelMixManifest('mix-manifest.json');
 ```
 
 ## License
+
 This package follows the MIT open source agreement.
