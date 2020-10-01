@@ -3,9 +3,9 @@ const { WebpackLaravelMixManifest } = require('webpack-laravel-mix-manifest');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+    mode: 'none',
     entry: {
-        main: path.resolve(__dirname, 'src/index.js'),
+        main: path.resolve(__dirname, '../__src__/index.cjs'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
