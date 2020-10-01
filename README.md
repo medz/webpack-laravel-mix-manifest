@@ -11,9 +11,16 @@ A webpack plugin that generates Laravel framework compatible `mix-manifest.josn`
 
 > If you are using `webpack` 2 or 3 then install version `1.x` instead.
 
-## Use case
+## Use Case
+
 If you are not using [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) to bundle your assets in Laravel php framework, 
 and you still want to utilize `mix()` helper method, this plugin can help you in generating `mix-manifest.json`
+
+Supported: 
+
+- [x] TypeScript
+- [x] ECMAScript 2015+ or Babel
+- [x] CommonJS
 
 ## Installation
 
@@ -30,7 +37,7 @@ yarn add webpack-laravel-mix-manifest --dev
 
 ## Examples
 
-### Using the ES6 (babel) webpack configuration usage:
+### Using the ES module (Babel) webpack configuration usage
 
 ```js
 import { WebpackLaravelMixManifest } from 'webpack-laravel-mix-manifest';
@@ -43,7 +50,9 @@ export default {
 };
 ```
 
-### Using CommonJS webpack configuration using:
+Example 👉 [ES module(Babel) Example](examples/dev-es-module)
+
+### Using CommonJS webpack configuration usage
 
 ```js
 const { WebpackLaravelMixManifest } = require('webpack-laravel-mix-manifest');
@@ -55,6 +64,8 @@ module.exports = {
     ]
 };
 ```
+
+Example 👉 [CommonJS Example](examples/dev-commonjs-module)
 
 ### Laravel usage
 
@@ -81,6 +92,7 @@ Browser output:
 ## Configuration options
 
 You can customize the name of the generated JSON file name.
+
 ```js
 new WebpackLaravelMixManifest('mix-manifest.json');
 ```
