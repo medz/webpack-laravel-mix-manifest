@@ -15,9 +15,9 @@ A webpack plugin that generates Laravel framework compatible `mix-manifest.josn`
 
 | webpack version | plugin version |
 |:----:|:----:|
-| `2.x` or `3.x` | `1.x` |
-| `4.x` | `2.x` |
-| `5.0` | `3.0` |
+| `2.x` or `3.x` | [1.0.x](tree/v1.0) |
+| `4.x` | [2.1.x](tree/v2.1) or [v2.2](tree/v2.2) |
+| `5.0` | `3.0` - current branch |
 
 ## Use Case
 
