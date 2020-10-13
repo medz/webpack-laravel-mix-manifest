@@ -21,9 +21,7 @@
     "dist",
     "types"
   ],
-  "dependencies": {
-    "collect.js": "^4.28.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^26.0.14",
     "jest": "^26.4.2",

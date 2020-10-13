@@ -1,5 +1,4 @@
 import Path from 'path';
-import collect from "collect.js";
 
 export class Manifest {
     /**
@@ -19,7 +18,7 @@ export class Manifest {
      * Transform the Webpack stats into the shape we need.
      * @param state Value of webpack stats to json output.
      */
-    transform(stats: { assetsByChunkName: Record<string, string | string[]> }) {
+    transform(stats: { assetsByChunkName: Record<string, string | string[]> }): this {
         const assets = this.flattenAssets(stats);
         Object.keys(assets).forEach(entryName => {
             this.add(assets[entryName], entryName);
@@ -39,11 +38,13 @@ export class Manifest {
      * @param paths Need given paths.
      * @param entryName output entry name.
      */
-    add(paths: string[] | string, entryName: string) {
+    add(paths: string[] | string, entryName: string): this {
         if(Array.isArray(paths) || typeof paths === 'object') {
-            collect(paths)
-                .flatten()
-                .each(path => this.add(path, entryName))
+            let children = paths;
+            if (!Array.isArray(paths) && typeof paths === 'object') {
+                children = Object.values(paths);
+            }
+            children.forEach(path => this.add(path, entryName));
             return this;
         }
 
