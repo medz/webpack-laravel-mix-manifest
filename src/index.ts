@@ -1,8 +1,8 @@
-import webpack from 'webpack';
+import { sources, WebpackPluginInstance, Compiler, Compilation } from 'webpack';
 import { Manifest } from './manifest';
 
 export { Manifest }
-export class WebpackLaravelMixManifest implements webpack.Plugin {
+export class WebpackLaravelMixManifest implements WebpackPluginInstance {
     /**
      * Create the webpack plugin.
      * @param endpoint Laravel `mix` helper used filename.
@@ -15,18 +15,29 @@ export class WebpackLaravelMixManifest implements webpack.Plugin {
         public readonly endpoint: string = 'mix-manifest.json',
     ) {}
 
+    get compilationHookTap() {
+        return {
+            name: this.constructor.name,
+            stage: Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL,
+        }
+    }
+
     /**
      * Webpack plugin entry.
      * @param compiler webpack compiler
      */
-    apply(compiler: webpack.Compiler): void {
-        compiler
-            .hooks
-            .emit
-            .tap(
-                WebpackLaravelMixManifest.name,
-                this.hookTapCompilationHandler.bind(this),
-            );
+    apply(compiler: Compiler): void {
+        compiler.hooks.thisCompilation.tap(this.constructor.name, (compilation) => {
+            compilation.hooks.processAssets.tap(this.compilationHookTap, () => this.hookTapFn(compilation));
+        });
+    }
+
+    hookTapFn(compilation: Compilation) {
+        const stats = compilation.getStats().toJson();
+        const manifest = this.createManifest()
+            .transform(stats)
+            .rebuild();
+        compilation.emitAsset(this.endpoint, new sources.RawSource(manifest, false));
     }
 
     /**
@@ -34,22 +45,5 @@ export class WebpackLaravelMixManifest implements webpack.Plugin {
      */
     createManifest(): Manifest {
         return new Manifest();
-    }
-
-    /**
-     * Webpack plugin hook handler.
-     * @param compilation webpack compilation
-     */
-     hookTapCompilationHandler(
-        compilation: webpack.compilation.Compilation,
-    ) {
-        const stats = compilation.getStats().toJson();
-        const manifest = this.createManifest()
-            .transform(stats)
-            .rebuild();
-        compilation.assets[this.endpoint] = {
-            source: () => manifest,
-            size: () => manifest.length,
-        }
     }
 }

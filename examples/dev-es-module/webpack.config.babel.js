@@ -1,27 +1,32 @@
 import path from 'path';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import { WebpackLaravelMixManifest } from 'webpack-laravel-mix-manifest';
 
-export default {
+const config = {
     mode: 'none',
     entry: {
         main: path.resolve(__dirname, '../__src__/index.mjs'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name]-[hash].js',
+        filename: '[name]-[chunkhash].js',
     },
     module: {
         rules: [
-            {
-                test: /\.[m]js$/,
-                exclude: /node_modules/,
-                loader: "babel-loader"
-            },
-        ],
-    },
+          {
+            test: /\.m?js$/,
+            exclude: /node_modules/,
+            use: {
+              loader: "babel-loader",
+              options: {
+                presets: ['@babel/preset-env']
+              }
+            }
+          }
+        ]
+      },
     plugins: [
-        new CleanWebpackPlugin,
         new WebpackLaravelMixManifest,
     ],
 };
+
+export default config;

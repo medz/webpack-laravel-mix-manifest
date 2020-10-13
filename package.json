@@ -15,8 +15,7 @@
   },
   "author": "Seven Du <shiweidu@outlook.com>",
   "license": "MIT",
-  "main": "dist/cjs/index.js",
-  "module": "dist/mjs/index.js",
+  "main": "dist/index.js",
   "types": "types/index.d.ts",
   "files": [
     "dist",
@@ -25,20 +24,15 @@
   "dependencies": {
     "collect.js": "^4.28.2"
   },
-  "peerDependencies": {
-    "webpack": "^4.*"
-  },
   "devDependencies": {
     "@types/jest": "^26.0.14",
-    "@types/webpack": "^4.41.22",
     "jest": "^26.4.2",
     "ts-jest": "^26.4.1",
     "typescript": "^4.0.3",
-    "webpack": "^4.44.2"
+    "webpack": "^5.0.0"
   },
   "scripts": {
-    "build:mjs": "tsc --build tsconfig.json",
-    "build:cjs": "tsc --build tsconfig.cjs.json",
+    "build": "tsc --build tsconfig.json",
     "test": "jest"
   }
 }

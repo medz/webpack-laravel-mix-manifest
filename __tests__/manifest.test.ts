@@ -1,4 +1,3 @@
-import webpack from 'webpack';
 import { Manifest } from '../src/manifest';
 
 it('Test constructor', () => {
@@ -21,11 +20,7 @@ it('Test add method', () => {
 });
 
 it('Test transform method', () => {
-    const stats: webpack.Stats.ToJsonOutput = {
-        _showErrors: false,
-        _showWarnings: false,
-        errors: [],
-        warnings: [],
+    const stats = {
         assetsByChunkName: {
             'a': 'b'
         }
@@ -39,6 +34,27 @@ it('Test transform method', () => {
     expect(manifest.rebuild()).toBe(str);
 });
 
+it('Test transform method 2', () => {
+    const stats = {
+        assetsByChunkName: {
+            'other-chunk': [
+                'other-chunk.js?id=11111',
+                'other-chunk.hjahahahhaha.css'
+            ],
+        }
+    }
+    const manifest = new Manifest();
+    manifest.transform(stats);
+
+    const data = {
+        '/other-chunk.js': '/other-chunk.js?id=11111',
+        '/other-chunk.css': '/other-chunk.hjahahahhaha.css'
+    };
+    const str = JSON.stringify(data, null, 2);
+
+    expect(manifest.rebuild()).toBe(str);
+});
+
 it('Test rebuild method', () => {
     const manifest = new Manifest();
     expect(manifest.rebuild()).toBe(JSON.stringify({}, null, 2));
@@ -46,11 +62,7 @@ it('Test rebuild method', () => {
 
 it('Test flattenAssets method', () => {
     const data = {a: "b"};
-    const stats: webpack.Stats.ToJsonOutput = {
-        _showErrors: false,
-        _showWarnings: false,
-        errors: [],
-        warnings: [],
+    const stats = {
         assetsByChunkName: data,
     }
 

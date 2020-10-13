@@ -1,6 +1,5 @@
 const path = require('path');
 const { WebpackLaravelMixManifest } = require('webpack-laravel-mix-manifest');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'none',
@@ -9,10 +8,9 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name]-[hash].js',
+        filename: '[name]-[chunkhash].js',
     },
     plugins: [
-        new CleanWebpackPlugin,
         new WebpackLaravelMixManifest,
     ]
 };

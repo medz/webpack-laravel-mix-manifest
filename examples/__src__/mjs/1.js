@@ -1,1 +1,0 @@
-export const mjsTest1Word = 'MJS test word 1!';
