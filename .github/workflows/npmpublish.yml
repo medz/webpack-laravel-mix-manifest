@@ -30,6 +30,6 @@ jobs:
       - run: npm ci
       - run: npm run build:cjs
       - run: npm run build:mjs
-      - run: npm publish
+      - run: npm publish --tag 2.2
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
