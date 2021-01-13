@@ -5,6 +5,7 @@ const config = {
     mode: 'none',
     entry: {
         main: path.resolve(__dirname, '../__src__/index.mjs'),
+        'path/to/main': path.resolve(__dirname, '../__src__/index.mjs'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
