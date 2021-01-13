@@ -22,8 +22,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    - run: npm run build:cjs
-    - run: npm run build:mjs
+    - run: npm run build
     - run: npm run test
       env:
         CI: true

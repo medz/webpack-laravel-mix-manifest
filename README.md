@@ -11,6 +11,14 @@ A webpack plugin that generates Laravel framework compatible `mix-manifest.josn`
 
 > If you are using `webpack` 2 or 3 then install version `1.x` instead.
 
+**The plug-in version corresponding to the webpack version**
+
+| webpack version | plugin version |
+|:----:|:----:|
+| `2.x` or `3.x` | [1.0.x](https://github.com/medz/webpack-laravel-mix-manifest/tree/v1.0) |
+| `4.x` | [2.1.x](https://github.com/medz/webpack-laravel-mix-manifest/tree/v2.1) or [v2.2](https://github.com/medz/webpack-laravel-mix-manifest/tree/v2.2) |
+| `5.0` | `3.0` - current branch |
+
 ## Use Case
 
 If you are not using [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) to bundle your assets in Laravel php framework, 

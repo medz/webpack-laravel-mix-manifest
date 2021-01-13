@@ -2,9 +2,9 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "sourceMap": true,
-    "module": "ESNext",
+    "module": "CommonJS",
     "target": "ESNext",
-    "outDir": "dist/mjs",
+    "outDir": "dist",
     "strict": true,
     "baseUrl": ".",
     "rootDir": "src",
