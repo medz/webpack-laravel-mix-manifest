@@ -68,3 +68,16 @@ it('Test normalizePath method', () => {
     expect(manifest.normalizePath('//\/\\\///\\/')).toBe('/');
     expect(manifest.normalizePath('//a/////////b\\\\\///c//d//1')).toBe('/a/b/c/d/1');
 });
+
+// See https://github.com/medz/webpack-laravel-mix-manifest/issues/18
+it(`Test add entity is unix path symbol #18`, () => {
+    const manifest = new Manifest();
+    const entityName = 'demo/test/word';
+    const paths = ['demo/test/word-haha.js', 'demo/test/word-test.css'];
+    const data = manifest.add(paths, entityName).rebuild();
+
+    expect(data).toBe(JSON.stringify({
+        [`/${entityName}.js`]: `/demo/test/word-haha.js`,
+        [`/${entityName}.css`]: `/demo/test/word-test.css`,
+    }, null, 2));
+});

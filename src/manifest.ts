@@ -57,7 +57,7 @@ export class Manifest {
         const extension = Path.extname(original);
 
         // Generate key and save it to manifest.
-        const key = original.replace(basename, `${entryName}${extension}`);
+        const key = original.replace(basename, Path.basename(entryName + extension));
         this.manifest[key] = path;
 
         return this;
