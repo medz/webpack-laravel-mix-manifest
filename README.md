@@ -7,7 +7,7 @@
 [![license](https://badgen.net/github/license/medz/webpack-laravel-mix-manifest)](https://github.com/medz/webpack-laravel-mix-manifest)
 [![downloads](https://badgen.net/npm/dt/webpack-laravel-mix-manifest)](https://www.npmjs.com/package/webpack-laravel-mix-manifest)
 
-A webpack plugin that generates Laravel framework compatible `mix-manifest.josn` file.
+A webpack plugin that generates Laravel framework compatible `mix-manifest.json` file.
 
 > If you are using `webpack` 2 or 3 then install version `1.x` instead.
 
