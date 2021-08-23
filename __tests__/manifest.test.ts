@@ -1,3 +1,4 @@
+import { StatsCompilation } from 'webpack';
 import { Manifest } from '../src/manifest';
 
 it('Test constructor', () => {
@@ -33,9 +34,9 @@ it(`Test add entity is unix path symbol #18`, () => {
 });
 
 it('Test transform method', () => {
-    const stats = {
+    const stats: StatsCompilation = {
         assetsByChunkName: {
-            'a': 'b'
+            'a': ['b']
         }
     }
     const manifest = new Manifest();
@@ -74,7 +75,7 @@ it('Test rebuild method', () => {
 });
 
 it('Test flattenAssets method', () => {
-    const data = {a: "b"};
+    const data = {a: ["b"]};
     const stats = {
         assetsByChunkName: data,
     }

@@ -1,4 +1,5 @@
 import Path from 'path';
+import { StatsCompilation } from 'webpack';
 
 export class Manifest {
     /**
@@ -18,7 +19,7 @@ export class Manifest {
      * Transform the Webpack stats into the shape we need.
      * @param state Value of webpack stats to json output.
      */
-    transform(stats: { assetsByChunkName: Record<string, string | string[]> }): this {
+    transform(stats: StatsCompilation): this {
         const assets = this.flattenAssets(stats);
         Object.keys(assets).forEach(entryName => {
             this.add(assets[entryName], entryName);
@@ -67,7 +68,7 @@ export class Manifest {
      * Flatten the generated stats assets into an ollection.
      * @param stats Value of webpack stats to json output.
      */
-    flattenAssets(stats: { assetsByChunkName: Record<string, string | string[]> }): Record<string, string | string[]> {
+    flattenAssets(stats: StatsCompilation): Record<string, string | string[]> {
         return Object.assign({}, stats.assetsByChunkName);
     }
 
