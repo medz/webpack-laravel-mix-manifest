@@ -12,3 +12,17 @@ updates:
     labels:
       - "javascript"
       - "dependencies"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/examples/dev-commonjs-module" # Location of package manifests
+    schedule:
+      interval: "daily"
+    labels:
+      - "example"
+      - "dependencies"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/examples/dev-es-module" # Location of package manifests
+    schedule:
+      interval: "daily"
+    labels:
+      - "example"
+      - "dependencies"
