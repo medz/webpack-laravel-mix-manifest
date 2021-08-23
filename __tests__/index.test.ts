@@ -1,3 +1,4 @@
+import { it, expect } from '@jest/globals';
 import { WebpackLaravelMixManifest, Manifest } from '../src';
 
 it('Test constructor', () => {

@@ -1,3 +1,4 @@
+import { it, expect } from '@jest/globals';
 import { StatsCompilation } from 'webpack';
 import { Manifest } from '../src/manifest';
 
