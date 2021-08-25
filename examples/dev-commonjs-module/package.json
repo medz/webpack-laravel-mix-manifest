@@ -10,6 +10,6 @@
   "devDependencies": {
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",
-    "webpack-laravel-mix-manifest": "file:../.."
+    "webpack-laravel-mix-manifest": "^3.0.7"
   }
 }
