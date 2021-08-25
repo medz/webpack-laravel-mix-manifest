@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "module": "CommonJS",
     "target": "ESNext",
     "outDir": "dist",
@@ -15,11 +15,11 @@
     "allowJs": false,
     "declaration": true,
     "declarationMap": false,
-    "declarationDir": "types",
   },
   "include": ["src/**/*"],
   "exclude": [
     "node_modules",
     "__tests__",
+    "examples"
   ]
 }
