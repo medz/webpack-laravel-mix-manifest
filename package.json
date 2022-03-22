@@ -17,9 +17,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "devDependencies": {
     "@types/jest": "^27.0.1",
     "@types/node": "^17.0.0",

@@ -1,5 +1,5 @@
 import { it, expect } from '@jest/globals';
-import { WebpackLaravelMixManifest, Manifest } from '../src';
+import { WebpackLaravelMixManifest } from '../src';
 
 it('Test constructor', () => {
     const plugin = new WebpackLaravelMixManifest;
@@ -10,9 +10,4 @@ it('Test constructor', () => {
 
     const plugin3 = new WebpackLaravelMixManifest(undefined);
     expect(plugin3.endpoint).toBe('mix-manifest.json');
-});
-
-it('Test createManifest method', () => {
-    const manifest = new WebpackLaravelMixManifest().createManifest();
-    expect(manifest).toBeInstanceOf(Manifest);
 });
