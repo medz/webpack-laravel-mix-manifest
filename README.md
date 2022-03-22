@@ -12,18 +12,18 @@ A webpack plugin that generates Laravel framework compatible `mix-manifest.json`
 
 **The plug-in version corresponding to the webpack version**
 
-| webpack version | plugin version |
-|:----:|:----:|
-| `2.x` or `3.x` | [1.0.x](https://github.com/medz/webpack-laravel-mix-manifest/tree/v1.0) |
-| `4.x` | [2.1.x](https://github.com/medz/webpack-laravel-mix-manifest/tree/v2.1) or [v2.2](https://github.com/medz/webpack-laravel-mix-manifest/tree/v2.2) |
-| `5.0` | `3.0` - current branch |
+| webpack version |                                                                  plugin version                                                                   |
+| :-------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------: |
+| `2.x` or `3.x`  |                                      [1.0.x](https://github.com/medz/webpack-laravel-mix-manifest/tree/v1.0)                                      |
+|      `4.x`      | [2.1.x](https://github.com/medz/webpack-laravel-mix-manifest/tree/v2.1) or [v2.2](https://github.com/medz/webpack-laravel-mix-manifest/tree/v2.2) |
+|      `5.0`      |                                                              `3.x` - current branch                                                               |
 
 ## Use Case
 
-If you are not using [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) to bundle your assets in Laravel php framework, 
+If you are not using [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) to bundle your assets in Laravel php framework,
 and you still want to utilize `mix()` helper method, this plugin can help you in generating `mix-manifest.json`
 
-Supported: 
+Supported:
 
 - [x] TypeScript
 - [x] ECMAScript 2015+ or Babel
@@ -36,6 +36,7 @@ The plugin is available via npm:
 ```shell
 npm install webpack-laravel-mix-manifest --save-dev
 ```
+
 If you are using yarn:
 
 ```shell
@@ -50,10 +51,10 @@ yarn add webpack-laravel-mix-manifest --dev
 import { WebpackLaravelMixManifest } from 'webpack-laravel-mix-manifest';
 
 export default {
-    plugins: [
-        // Write out mix-manifest.json to build directory.
-        new WebpackLaravelMixManifest()
-    ]
+  plugins: [
+    // Write out mix-manifest.json to build directory.
+    new WebpackLaravelMixManifest(),
+  ],
 };
 ```
 
@@ -65,10 +66,10 @@ Example 👉 [ES module(Babel) Example](examples/dev-es-module)
 const { WebpackLaravelMixManifest } = require('webpack-laravel-mix-manifest');
 
 module.exports = {
-    plugins: [
-        // Write out mix-manifest.json to build directory.
-        new WebpackLaravelMixManifest()
-    ]
+  plugins: [
+    // Write out mix-manifest.json to build directory.
+    new WebpackLaravelMixManifest(),
+  ],
 };
 ```
 

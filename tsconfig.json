@@ -14,12 +14,8 @@
     "alwaysStrict": true,
     "allowJs": false,
     "declaration": true,
-    "declarationMap": false,
+    "declarationMap": false
   },
   "include": ["src/**/*"],
-  "exclude": [
-    "node_modules",
-    "__tests__",
-    "examples"
-  ]
+  "exclude": ["node_modules", "__tests__", "examples"]
 }
